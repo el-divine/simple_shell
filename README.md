@@ -1,6 +1,6 @@
 0x16. C - Simple Shell
 
-Team Project by Mark Elizabeth & Michael Otieno
+Team Project by Mark Elizabeth & 
 17 Tasks on C - Simple Shell
 0. Betty would be proud
 mandatory
