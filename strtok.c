@@ -1,24 +1,22 @@
 #include "shell.h"
 
 /**
- *main- function to read shell command line by line
+ *main- function to read shell command with arguments
  *@token_count: integer param
  *@envp: char pointer param
  *Return: 0 on Success
  **/
-int line_interpreter(int token_count, char **envp)
+int line_arguements(int token_count, char **envp)
 {
 	bool flag = true;
-	char *str = NULL, prompt = "$ : ";
+	char *str = NULL;
 	size_t str_size = 0;
-	size_t bytes;
 	pid_t child_pid;
 	char *token;
 	char *delim = " ";
 	char *child_argv[MAX_INPUT_SIZE];
 
-	_printf[STDOUT_FILENO, prompt, 2];
-
+	_printf("$ : ");
 	while (flag)
 	{
 		if (getline(&str, &str_size, stdin) != -1)
@@ -40,26 +38,21 @@ int line_interpreter(int token_count, char **envp)
 				{
 					execve(child_argv[0], child_argv, envp);
 					perror("./simple_shell");
-					exit();
-				}
-				else
-				{
-					_printf("No such file or directory\n");
-					exit();
+					exit(1);
 				}
 				else
 				{
 					wait(NULL);
+					if (flag)
+					{
+						_printf("$ : ");
+					}
 				}
 			}
-			if (flag)
+			else
 			{
-				_printf("$ : ");
+				flag = false;
 			}
-		}
-		else
-		{
-			flag = false;
 		}
 	}
 	free(str);

@@ -18,14 +18,15 @@
 char **get_path();
 int main(void);
 void _printf(const char *message);
+ssize_t write(int fd, const void *buf, size_t count);
 int line_interpreter(int token_count, char **envp);
 int line_arguements(int token_count, char **envp);
 size_t _strcspn(const char *s, const char *c);
 int _atoi(char *str);
 char *get_full_path(const char* str);
-int _exit(char **line_tok);
+int exit(char **line_tok);
 int _env(info_t *info);
-char *_getenv(info_t *info, const char *name);
+char *_getenv(const char *name);
 int _getline(char *input, int size);
 void clear_buffer(char *buffer);
 char *mem_cpy(char *dest, char *src, int n);
